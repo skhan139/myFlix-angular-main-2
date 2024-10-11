@@ -8,13 +8,14 @@ import { FormsModule } from '@angular/forms';
 import { MatLabel } from '@angular/material/form-field';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
   styleUrl: './user-login-form.component.scss',
   standalone: true,
-  imports: [FormsModule, MatLabel, MatFormFieldModule, MatCardModule],
+  imports: [FormsModule, MatLabel, MatFormFieldModule, MatCardModule, MatInputModule],
 })
 export class UserLoginFormComponent implements OnInit {
   @Input() userData = { userName: '', password: '' };
