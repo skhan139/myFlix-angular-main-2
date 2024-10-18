@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-message-box',
@@ -11,15 +11,19 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class MessageBoxComponent {
   constructor(
+    public dialogRef: MatDialogRef<MessageBoxComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: {
       title: string;
       content: string;
-      onClose: () => void;
+      onClose?: () => void;  // Make onClose optional
     }
   ) {}
 
   closeMessageBox(): void {
-    this.data.onClose();
+    if (this.data.onClose && typeof this.data.onClose === 'function') {
+      this.data.onClose();  // Safely call onClose if it's defined
+    }
+    this.dialogRef.close();  // Always close the dialog
   }
 }

@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageBoxComponent } from '../message-box/message-box.component';
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -23,14 +24,17 @@ import { MessageBoxComponent } from '../message-box/message-box.component';
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public router: Router,
     public dialog: MatDialog
   ) {}
+
   ngOnInit(): void {
     this.getMovies();
   }
+
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe(
       (res) => {
@@ -38,7 +42,7 @@ export class MovieCardComponent implements OnInit {
 
         let user = JSON.parse(localStorage.getItem('user') || '');
         this.movies.forEach((movie: any) => {
-          movie.isFavorite = user.favoriteMovies?.includes(movie._id);
+          movie.isFavorite = user.FavoriteMovies?.includes(movie._id);
         });
         return this.movies;
       },
@@ -52,14 +56,21 @@ export class MovieCardComponent implements OnInit {
     this.router.navigate(['welcome']);
     localStorage.removeItem('user');
   }
+
   redirectProfile(): void {
     this.router.navigate(['profile']);
   }
+
   modifyFavoriteMovies(movie: any): void {
     let user = JSON.parse(localStorage.getItem('user') || '');
     let icon = document.getElementById(`${movie._id}-favorite-icon`);
 
-    if (user.FavoriteMovies?.includes(movie._id)) {
+    // Ensure FavoriteMovies is initialized
+    if (!user.FavoriteMovies) {
+      user.FavoriteMovies = [];
+    }
+
+    if (user.FavoriteMovies.includes(movie._id)) {
       this.fetchApiData.deleteFavoriteMovie(user.id, movie.title).subscribe(
         (res) => {
           icon?.setAttribute('fontIcon', 'favorite_border');
@@ -76,20 +87,22 @@ export class MovieCardComponent implements OnInit {
     } else {
       icon?.setAttribute('fontIcon', 'favorite');
       user.FavoriteMovies.push(movie._id);
-      // addFavoriteMovie return unauth, debugging
+
+      // Uncomment this after debugging addFavoriteMovie API
       // this.fetchApiData.addFavoriteMovie(user.id, movie.title).subscribe(res => {
       //     icon?.setAttribute("fontIcon", "favorite");
-
-      //     console.log("add success")
+      //     console.log("add success");
       //     console.log(res);
-      //     user.favoriteMovies = res.favoriteMovies;
+      //     user.FavoriteMovies = res.FavoriteMovies;
       //     localStorage.setItem("user", JSON.stringify(user));
       // }, err => {
-      //     console.error(err)
+      //     console.error(err);
       // })
     }
+
     localStorage.setItem('user', JSON.stringify(user));
   }
+
   showGenre(movie: any): void {
     this.dialog.open(MessageBoxComponent, {
       data: {
@@ -99,6 +112,7 @@ export class MovieCardComponent implements OnInit {
       width: '400px',
     });
   }
+
   showDirector(movie: any): void {
     this.dialog.open(MessageBoxComponent, {
       data: {
@@ -109,6 +123,7 @@ export class MovieCardComponent implements OnInit {
       width: '400px',
     });
   }
+
   showDetail(movie: any): void {
     this.dialog.open(MessageBoxComponent, {
       data: {
