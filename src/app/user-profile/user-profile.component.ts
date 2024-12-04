@@ -10,6 +10,10 @@ import { MatInput } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+/**
+ * Component for displaying user profile.
+ * @component
+ */
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',

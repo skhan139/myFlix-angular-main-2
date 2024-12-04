@@ -24,6 +24,10 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class UserRegistrationFormComponent implements OnInit {
+  /**
+   * registration data passed to the component.
+   * @type {Movie}
+   */
   @Input() userData = { userName: '', password: '', email: '', birthday: '' };
 
   constructor(

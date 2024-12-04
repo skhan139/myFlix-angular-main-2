@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageBoxComponent } from '../message-box/message-box.component';
 
+/**
+ * Component for displaying movie cards.
+ * @component
+ */
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -23,6 +27,10 @@ import { MessageBoxComponent } from '../message-box/message-box.component';
   ],
 })
 export class MovieCardComponent implements OnInit {
+  /**
+   * Movie data passed to the component.
+   * @type {Movie}
+   */
   movies: any[] = [];
 
   constructor(

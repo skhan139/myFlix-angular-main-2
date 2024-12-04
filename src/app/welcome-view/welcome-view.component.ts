@@ -4,6 +4,10 @@ import { UserRegistrationFormComponent } from '../user-registration-form/user-re
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
+/**
+ * Component for displaying welcome view.
+ * @component
+ */
 @Component({
   selector: 'app-welcome-view',
   templateUrl: './welcome-view.component.html',

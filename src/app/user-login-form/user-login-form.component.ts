@@ -19,6 +19,10 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class UserLoginFormComponent implements OnInit {
   @Input() userData = { userName: '', password: '' };
+  /**
+   * Emits an event when the user clicks the login.
+   * @type {EventEmitter<Login>}
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,

@@ -4,6 +4,10 @@ import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 
+/**
+ * Component for displaying navigation bar.
+ * @component
+ */
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',

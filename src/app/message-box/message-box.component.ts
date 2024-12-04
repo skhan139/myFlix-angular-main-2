@@ -2,6 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+/**
+ * Component for displaying message box.
+ * @component
+ */
 @Component({
   selector: 'app-message-box',
   standalone: true,
