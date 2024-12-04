@@ -2,6 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
 
+## Features
+- Allows users to create a profile (User Registration)
+- Allows users to login (User Login)
+- Displays a list of movies (movie card)
+- Allows users ro favorite and unfavorite movies
+- Allows users to update login information, email, and birthdate
+- Completely responsive design on both mobile and desktop devices
+
+## Technolgies Used
+- Angular
+- Angular Material
+- CSS
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
@@ -25,8 +38,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-# myFlix-Angular-khan
-# joud-angular-myFlix
-# sam-angular-myFlix-main
-# sam-angular-myFlix-main
-# sam-myFlix-angular-main
+
